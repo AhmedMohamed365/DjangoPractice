@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'BookListAPI',
     'debug_toolbar',
     'djoser',
+    'rest_framework_simplejwt',
 
 ]
 
@@ -136,9 +137,13 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.XMLRenderer',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES':(
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ),
+    'DEFAULT_THROTTLE_RATES':{
+        'anon':'2/minute',
+    }
 }
 
 DJOSER = {
